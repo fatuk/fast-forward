@@ -2,6 +2,7 @@
 <div class="container">
 	<!-- Home -->
 	<div class="home">
+		<!-- Game info and controls -->
 		<fieldset class="fieldset">
 			<legend class="fieldset__legend">
 				Auth
@@ -44,6 +45,26 @@
 				</button>
 			</div>
 		</fieldset>
-
+	<!-- Game steps -->
+	<div class="steps">
+		<h2 class="steps__title">
+			Game flow steps:
+		</h2>
+		<ul
+			ng-if="steps.length==0"
+			class="steps__list">
+			<li
+				class="steps__item">
+				Nothing yet happened
+			</li>
+		</ul>
+		<ul class="steps__list">
+			<li
+				ng-repeat="(index, step) in steps"
+				class="steps__item">
+				{{index+1}}. {{step.name}}
+			</li>
+		</ul>
+	</div>
 	</div>
 </div>

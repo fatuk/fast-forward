@@ -4,6 +4,7 @@
 	angular.module('homeCtrl', [])
 		.controller('HomeCtrl', [
 			'$scope',
+			'GameFlowService',
 			'$log',
 			'$location',
 			'FINAL_RESULT',
@@ -23,12 +24,17 @@
 			homeCtrl
 		]);
 
-	function homeCtrl($scope, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
+	function homeCtrl($scope, GameFlowService, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
 		$scope.init = function () {
 			$scope.token = localStorageService.get('accessToken');
 			$scope.currentGame = localStorageService.get('currentGame');
 
-
+			// Watch game flow steps
+			$scope.$watch(function () {
+				return GameFlowService;
+			}, function () {
+				$scope.steps = GameFlowService.steps;
+			}, true);
 		};
 
 		$scope.saveData = function () {
@@ -55,6 +61,8 @@
 
 		$scope.resetGame = function () {
 			var currentGame = localStorageService.get('currentGame');
+			$scope.steps = [];
+
 			GameService.resetGame(currentGame)
 				.then(function (data) {
 					// Success
@@ -81,16 +89,23 @@
 					switch (moduleType) {
 					case WELCOME_SCREEN:
 						console.log('Welcome screen');
+						GameFlowService.steps.push({
+							name: 'Welcome screen'
+						});
 						$scope.nextStep();
-						break;
-					case CONSTRUCTOR:
-						console.log('Constructor screen');
 						break;
 					case NEWSLETTER:
 						console.log('Newsletter screen');
+						GameFlowService.steps.push({
+							name: 'Newsletter screen'
+						});
+						$scope.nextStep();
 						break;
 					case BUDGET:
 						console.log('Budget screen');
+						GameFlowService.steps.push({
+							name: 'Budget screen'
+						});
 						break;
 					case EVENT:
 						console.log('Event screen');
