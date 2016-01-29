@@ -1,7 +1,6 @@
 <!-- Home view -->
 <div class="container">
-	<!-- Home -->
-	<div class="home">
+	<div class="col-4">
 		<!-- Game info and controls -->
 		<fieldset class="fieldset">
 			<legend class="fieldset__legend">
@@ -45,26 +44,68 @@
 				</button>
 			</div>
 		</fieldset>
-	<!-- Game steps -->
-	<div class="steps">
-		<h2 class="steps__title">
-			Game flow steps:
-		</h2>
-		<ul
-			ng-if="steps.length==0"
-			class="steps__list">
-			<li
-				class="steps__item">
-				Nothing yet happened
-			</li>
-		</ul>
-		<ul class="steps__list">
-			<li
-				ng-repeat="(index, step) in steps"
-				class="steps__item">
-				{{index+1}}. {{step.name}}
-			</li>
-		</ul>
 	</div>
+	<div class="col-2">
+		<!-- Game steps -->
+		<div class="steps">
+			<h2 class="steps__title">
+				Game flow steps:
+			</h2>
+			<ul
+				ng-if="steps.length==0"
+				class="steps__list">
+				<li
+					class="steps__item">
+					Nothing yet happened
+				</li>
+			</ul>
+			<ul class="steps__list">
+				<li
+					ng-repeat="(index, step) in steps"
+					class="steps__item">
+					{{index+1}}. {{step.name}}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-2">
+		<div class="game-info">
+			<h2 class="game-info__title">
+				Game info:
+			</h2>
+			<!-- No data -->
+			<ul
+				ng-if="!gameInfo.courseName"
+				class="game-info__list">
+				<li class="game-info__item">
+					No information available
+				</li>
+			</ul>
+			<ul
+				ng-if="gameInfo.courseName"
+				class="game-info__list">
+				<li class="game-info__item">
+					<strong>Course name:</strong> {{gameInfo.courseName}}
+				</li>
+				<li class="game-info__item">
+					<strong>Quarter:</strong> {{gameInfo.period}}
+				</li>
+				<li class="game-info__item">
+					<strong>Game progress:</strong> {{gameInfo.progress}}
+				</li>
+				<li class="game-info__item">
+					<strong>Balance:</strong> {{gameInfo.balance | currency:'$':0}}
+				</li>
+				<li class="game-info__item">
+					<strong>Risk:</strong> {{gameInfo.risk}}
+				</li>
+				<li class="game-info__item">
+					<strong>Is game completed</strong>: {{gameInfo.isCompleted}}
+				</li>
+				<li class="game-info__item">
+					<strong>Save date:</strong> {{gameInfo.saveDate | date:'dd MMMM yy / hh:mm'}}
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

@@ -35,6 +35,13 @@
 			}, function () {
 				$scope.steps = GameFlowService.steps;
 			}, true);
+
+			// Watch game info
+			$scope.$watch(function () {
+				return GameService.gameInfo;
+			}, function () {
+				$scope.gameInfo = GameService.gameInfo;
+			}, true);
 		};
 
 		$scope.saveData = function () {
@@ -85,7 +92,7 @@
 
 					GameService.gameInfo = data.gameInfo;
 
-					// console.log('Next step', data);
+					console.log(data);
 					switch (moduleType) {
 					case WELCOME_SCREEN:
 						console.log('Welcome screen');
@@ -103,24 +110,37 @@
 						break;
 					case BUDGET:
 						console.log('Budget screen');
+						$scope.saveResult(app.budget.q1);
 						GameFlowService.steps.push({
 							name: 'Budget screen'
 						});
 						break;
 					case EVENT:
 						console.log('Event screen');
+						GameFlowService.steps.push({
+							name: 'Event screen'
+						});
 						break;
 					case INITIATIVE:
 						console.log('Initiative screen');
+						GameFlowService.steps.push({
+							name: 'Initiative screen'
+						});
 						break;
 					case ACTIVITY:
 						console.log(activityType);
 						switch (activityType) {
 						case DROP_DOWN:
 							console.log('Activity DropDown screen');
+							GameFlowService.steps.push({
+								name: 'Activity DropDown screen'
+							});
 							break;
 						case IMAGE_SELECT:
 							console.log('Activity Image select screen');
+							GameFlowService.steps.push({
+								name: 'Activity Image select screen'
+							});
 							break;
 						default:
 							console.log('office');
@@ -129,12 +149,21 @@
 						break;
 					case QUIZ:
 						console.log('Quiz screen');
+						GameFlowService.steps.push({
+							name: 'Quiz screen'
+						});
 						break;
 					case QUARTER_RESULT:
 						console.log('Quarter result screen');
+						GameFlowService.steps.push({
+							name: 'Quarter result screen'
+						});
 						break;
 					case FINAL_RESULT:
 						console.log('Final result screen');
+						GameFlowService.steps.push({
+							name: 'Final result screen'
+						});
 						break;
 					default:
 						console.log('office');
@@ -143,6 +172,20 @@
 
 					return data;
 
+				}, function (err) {
+					// Error
+					$log.error(err);
+				});
+		};
+
+		$scope.saveResult = function (moduleData) {
+			var currentGame = localStorageService.get('currentGame');
+
+			GameService.saveResult(currentGame, moduleData)
+				.then(function (data) {
+					console.log(data);
+					GameService.gameInfo = data.gameInfo;
+					$scope.nextStep();
 				}, function (err) {
 					// Error
 					$log.error(err);
