@@ -4,12 +4,14 @@ var app = angular.module('myApp', [
 
 		'mainCtrl',
 		'homeCtrl',
+
 		'characterService',
 		'userService',
 		'authService',
 		'gameService',
 		'leaderboardService',
 		'errorNotificationService',
+		'gameFlowService',
 		'authInterceptorService'
 	])
 	.config([
