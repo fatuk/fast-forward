@@ -1,0 +1,44 @@
+<!-- Home view -->
+<div class="container">
+	<!-- Home -->
+	<div class="home">
+		<fieldset class="fieldset">
+			<legend class="fieldset__legend">
+				Auth
+			</legend>
+			<div class="fieldset__container">
+				<!-- Token -->
+				<label class="label">
+					<span class="label__text">
+						Token
+					</span>
+					<input
+						ng-model="token"
+						type="text"
+						class="input input_token">
+				</label>
+				<!-- Current game ID -->
+				<label class="label">
+					<span class="label__text">
+						Current game ID
+					</span>
+					<input
+						ng-model="currentGame"
+						type="number"
+						class="input input_id">
+				</label>
+				<button
+					ng-click="saveData()"
+					class="btn">
+					Save
+				</button>
+				<button
+					ng-click="startGame()"
+					class="btn">
+					Start game
+				</button>
+			</div>
+		</fieldset>
+
+	</div>
+</div>
