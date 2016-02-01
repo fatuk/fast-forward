@@ -21,7 +21,8 @@
 			saveResult: saveResult,
 			gameState: app.HAPPY,
 			isBlured: false,
-			gameInfo: {}
+			gameInfo: {},
+			moduleInfo: {}
 		};
 
 		return service;

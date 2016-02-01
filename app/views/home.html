@@ -45,6 +45,59 @@
 			</div>
 		</fieldset>
 	</div>
+	<!-- Break point -->
+	<div class="col-4">
+		<!-- Game info and controls -->
+		<fieldset class="fieldset">
+			<legend class="fieldset__legend">
+				Break point
+			</legend>
+			<div class="fieldset__container">
+				<!-- Token -->
+				<label class="label">
+					<span class="label__text">
+						Quarter&nbsp;
+					</span>
+					<select
+						ng-init="breakPointQuarter='1'"
+						ng-model="breakPointQuarter"
+						class="select">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</label>
+				<!-- Current game ID -->
+				<label class="label">
+					<span class="label__text">
+						Module type&nbsp;
+					</span>
+					<select
+						ng-init="breakPointModule='WelcomeScreen'"
+						ng-model="breakPointModule"
+						class="select">
+						<option value="WelcomeScreen">WelcomeScreen</option>
+						<option value="Budget">Budget</option>
+						<option value="Newsletter">Newsletter</option>
+						<option value="Event">Event</option>
+						<option value="Initiative">Initiative</option>
+						<option value="Activity">Activity</option>
+						<option value="Quiz">Quiz</option>
+						<option value="QuarterResult">QuarterResult</option>
+						<option value="FinalResult">FinalResult</option>
+					</select>
+				</label>
+				<!-- Activate -->
+				<button
+					ng-click="isBreakpoint=true"
+					class="btn red"
+					ng-class="{'green': isBreakpoint}">
+					Activate
+				</button>
+			</div>
+		</fieldset>
+	</div>
 	<div class="col-2">
 		<!-- Game steps -->
 		<div class="steps">
