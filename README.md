@@ -1,4 +1,4 @@
-# Lighthouse fast forward testing tool
+# Fast forward testing tool
 
 ## Instalation
 
