@@ -1,5 +1,17 @@
-app.budget = {
+app.activity = {
+	// All wrong
 	q1: {
+		moduleType: 'Activity',
+		moduleID: 20866,
+		activityResult: {
+			activityType: 'DropDown',
+			dropDownAnswer: {
+				correctAnswer: [20717, 20719, 20721],
+				incorrectAnswer: [20720, 20718, 20715, 20714, 20713, 20716]
+			}
+		}
+	},
+	q2: {
 		moduleType: 'Budget',
 		moduleID: 20870,
 		budgetResults: [{
@@ -11,23 +23,6 @@ app.budget = {
 		}, {
 			id: 20750,
 			selectedValue: 0
-		}]
-	},
-	q2: {
-		moduleType: 'Budget',
-		moduleID: 20871,
-		budgetResults: [{
-			id: 20751,
-			selectedValue: 10000
-		}, {
-			id: 20752,
-			selectedValue: 10000
-		}, {
-			id: 20753,
-			selectedValue: 15000
-		}, {
-			id: 20754,
-			selectedValue: 10000
 		}]
 	},
 	q3: {

@@ -28,6 +28,9 @@
 		$scope.init = function () {
 			$scope.token = localStorageService.get('accessToken');
 			$scope.currentGame = localStorageService.get('currentGame');
+			$scope.eventCounter = 0;
+
+			// $scope.resetGame();
 
 			// Watch game flow steps
 			$scope.$watch(function () {
@@ -69,6 +72,8 @@
 		$scope.resetGame = function () {
 			var currentGame = localStorageService.get('currentGame');
 			$scope.steps = [];
+			$scope.gameInfo = {};
+			$scope.eventCounter = 0;
 
 			GameService.resetGame(currentGame)
 				.then(function (data) {
@@ -88,7 +93,8 @@
 					// Success
 					var module = data.modules[0],
 						moduleType = module.moduleType,
-						activityType = module.activityType;
+						activityType = module.activityType,
+						currentQuarter = 'q' + $scope.gameInfo.period;
 
 					GameService.gameInfo = data.gameInfo;
 
@@ -110,19 +116,22 @@
 						break;
 					case BUDGET:
 						console.log('Budget screen');
-						$scope.saveResult(app.budget.q1);
+						$scope.saveResult(app.budget[currentQuarter]);
 						GameFlowService.steps.push({
 							name: 'Budget screen'
 						});
 						break;
 					case EVENT:
 						console.log('Event screen');
+						$scope.saveResult(app.eventData[$scope.eventCounter]);
+						$scope.eventCounter++;
 						GameFlowService.steps.push({
 							name: 'Event screen'
 						});
 						break;
 					case INITIATIVE:
 						console.log('Initiative screen');
+						$scope.saveResult(app.initiative[currentQuarter]);
 						GameFlowService.steps.push({
 							name: 'Initiative screen'
 						});
@@ -131,13 +140,15 @@
 						console.log(activityType);
 						switch (activityType) {
 						case DROP_DOWN:
-							console.log('Activity DropDown screen');
+							console.log('Activity Drag and Drop screen');
+							$scope.saveResult(app.activity[currentQuarter]);
 							GameFlowService.steps.push({
-								name: 'Activity DropDown screen'
+								name: 'Activity Drag and Drop screen'
 							});
 							break;
 						case IMAGE_SELECT:
 							console.log('Activity Image select screen');
+							$scope.saveResult(app.activity[currentQuarter]);
 							GameFlowService.steps.push({
 								name: 'Activity Image select screen'
 							});
@@ -149,6 +160,7 @@
 						break;
 					case QUIZ:
 						console.log('Quiz screen');
+						$scope.saveResult(app.quiz[currentQuarter]);
 						GameFlowService.steps.push({
 							name: 'Quiz screen'
 						});
@@ -158,12 +170,14 @@
 						GameFlowService.steps.push({
 							name: 'Quarter result screen'
 						});
+						$scope.nextStep();
 						break;
 					case FINAL_RESULT:
 						console.log('Final result screen');
 						GameFlowService.steps.push({
 							name: 'Final result screen'
 						});
+						$scope.nextStep();
 						break;
 					default:
 						console.log('office');
