@@ -32,29 +32,32 @@ app.budget = {
 	},
 	q3: {
 		moduleType: 'Budget',
-		moduleID: 20870,
+		moduleID: 20872,
 		budgetResults: [{
-			id: 20747,
+			id: 20755,
 			selectedValue: 0
 		}, {
-			id: 20748,
+			id: 20756,
 			selectedValue: 0
 		}, {
-			id: 20750,
+			id: 20757,
 			selectedValue: 0
 		}]
 	},
 	q4: {
 		moduleType: 'Budget',
-		moduleID: 20870,
+		moduleID: 20873,
 		budgetResults: [{
-			id: 20747,
+			id: 20758,
 			selectedValue: 0
 		}, {
-			id: 20748,
+			id: 20759,
 			selectedValue: 0
 		}, {
-			id: 20750,
+			id: 20760,
+			selectedValue: 0
+		}, {
+			id: 20761,
 			selectedValue: 0
 		}]
 	}

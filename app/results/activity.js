@@ -12,45 +12,52 @@ app.activity = {
 		}
 	},
 	q2: {
-		moduleType: 'Budget',
-		moduleID: 20870,
-		budgetResults: [{
-			id: 20747,
-			selectedValue: 0
-		}, {
-			id: 20748,
-			selectedValue: 0
-		}, {
-			id: 20750,
-			selectedValue: 0
-		}]
+		moduleType: 'Activity',
+		moduleID: 20867,
+		activityResult: {
+			activityType: 'ImageSelect',
+			elapsedTime: 3,
+			selectedAnswer: [20725, 20726]
+		}
 	},
 	q3: {
-		moduleType: 'Budget',
-		moduleID: 20870,
-		budgetResults: [{
-			id: 20747,
-			selectedValue: 0
-		}, {
-			id: 20748,
-			selectedValue: 0
-		}, {
-			id: 20750,
-			selectedValue: 0
-		}]
+		moduleType: 'Activity',
+		moduleID: 20868,
+		activityResult: {
+			activityType: 'DropDown',
+			dropDownAnswer: {
+				correctAnswer: [20717, 20719, 20721],
+				incorrectAnswer: [20720, 20718, 20715, 20714, 20713, 20716]
+			}
+		}
 	},
 	q4: {
-		moduleType: 'Budget',
-		moduleID: 20870,
-		budgetResults: [{
-			id: 20747,
-			selectedValue: 0
-		}, {
-			id: 20748,
-			selectedValue: 0
-		}, {
-			id: 20750,
-			selectedValue: 0
-		}]
+		moduleType: 'Activity',
+		moduleID: 20869,
+		activityResult: {
+			activityType: 'Order',
+			orderedAnswer: [{
+				id: 20740,
+				selectedOrder: 1
+			}, {
+				id: 20741,
+				selectedOrder: 2
+			}, {
+				id: 20742,
+				selectedOrder: 3
+			}, {
+				id: 20743,
+				selectedOrder: 4
+			}, {
+				id: 20744,
+				selectedOrder: 5
+			}, {
+				id: 20745,
+				selectedOrder: 6
+			}, {
+				id: 20746,
+				selectedOrder: 7
+			}]
+		}
 	}
 };

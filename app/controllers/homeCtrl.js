@@ -4,6 +4,7 @@
 	angular.module('homeCtrl', [])
 		.controller('HomeCtrl', [
 			'$scope',
+			'ORDER',
 			'GameFlowService',
 			'$log',
 			'$location',
@@ -24,7 +25,7 @@
 			homeCtrl
 		]);
 
-	function homeCtrl($scope, GameFlowService, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
+	function homeCtrl($scope, ORDER, GameFlowService, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
 		$scope.init = function () {
 			$scope.token = localStorageService.get('accessToken');
 			$scope.currentGame = localStorageService.get('currentGame');
@@ -169,6 +170,13 @@
 									name: 'Activity Image select screen'
 								});
 								break;
+							case ORDER:
+								console.log('Activity Schema screen');
+								$scope.saveResult(app.activity[currentQuarter]);
+								GameFlowService.steps.push({
+									name: 'Activity Schema screen'
+								});
+								break;
 							default:
 								console.log('office');
 								break;
@@ -212,15 +220,17 @@
 		$scope.saveResult = function (moduleData) {
 			var currentGame = localStorageService.get('currentGame');
 
-			GameService.saveResult(currentGame, moduleData)
-				.then(function (data) {
-					console.log(data);
-					GameService.gameInfo = data.gameInfo;
-					$scope.nextStep();
-				}, function (err) {
-					// Error
-					$log.error(err);
-				});
+			if (!$scope.isStop) {
+				GameService.saveResult(currentGame, moduleData)
+					.then(function (data) {
+						console.log(data);
+						GameService.gameInfo = data.gameInfo;
+						$scope.nextStep();
+					}, function (err) {
+						// Error
+						$log.error(err);
+					});
+			}
 		};
 
 
