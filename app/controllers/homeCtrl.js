@@ -26,7 +26,7 @@
 			homeCtrl
 		]);
 
-	function homeCtrl($scope, ORDER, GameFlowService, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
+	function homeCtrl($scope, SELECT, ORDER, GameFlowService, $log, $location, FINAL_RESULT, IMAGE_SELECT, QUARTER_RESULT, QUIZ, DROP_DOWN, ACTIVITY, INITIATIVE, EVENT, WELCOME_SCREEN, CONSTRUCTOR, NEWSLETTER, BUDGET, localStorageService, GameService) {
 		$scope.init = function () {
 			$scope.token = localStorageService.get('accessToken');
 			$scope.currentGame = localStorageService.get('currentGame');
