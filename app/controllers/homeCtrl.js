@@ -170,6 +170,13 @@
 									name: 'Activity Image select screen'
 								});
 								break;
+							case SELECT:
+								$log.info('Activity Without Image select screen');
+								$scope.saveResult(app.activity[currentQuarter]);
+								GameFlowService.steps.push({
+									name: 'Activity Without Image select screen'
+								});
+								break;
 							case ORDER:
 								console.log('Activity Schema screen');
 								$scope.saveResult(app.activity[currentQuarter]);
