@@ -56,3 +56,4 @@ app.constant('QUARTER_RESULT', 'QuarterResult');
 app.constant('IMAGE_SELECT', 'ImageSelect');
 app.constant('FINAL_RESULT', 'FinalResult');
 app.constant('ORDER', 'Order');
+app.constant('SELECT', 'Select');

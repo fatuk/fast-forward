@@ -4,6 +4,7 @@
 	angular.module('homeCtrl', [])
 		.controller('HomeCtrl', [
 			'$scope',
+			'SELECT',
 			'ORDER',
 			'GameFlowService',
 			'$log',
